@@ -13,6 +13,7 @@ var oldmanImg;
 var skyblockImg;
 var waterImg;
 var waveImg;
+var wheeImg;
 
 //give a starting position for the cloud 1,2,3,4
 var cloud1X = -100;
@@ -42,6 +43,7 @@ function preload() {
 	skyblockImg = loadImage("images/skyblock.png");
 	waterImg = loadImage("images/water.png");
 	waveImg = loadImage("images/wave.png");
+	wheelImg = loadImage("images/wheel.png");
 }
 
 function setup() {
@@ -62,7 +64,8 @@ function draw() {
 	}
 
 	//place the water
-	image(waterImg, 0, waterY - 60);
+	image(waterImg, 0, waterY - 45);
+	image(waterImg, -100, waterY - 60);
 
 	//animte the oldman
 	image(oldmanImg, 300, 209);
@@ -84,10 +87,11 @@ function draw() {
 	}
 
 	if (mouseIsPressed) {
-		image(fishImg, 400, mouseY);
+		image(fishImg, random(401, 404), mouseY);
 	} else {
 		image(fishImg, 400, 235);
 	}
+
 	//hide the rope
 	image(skyblockImg, 350, 74);
 
@@ -109,14 +113,25 @@ function draw() {
 		waterSpeedY = -waterSpeedY;
 	}
 
-	// animate the water
-	image(waterImg, 0, waterY + 20);
 
 	// animate the wave
 	waveX += 0.8;
 	if (waveX > 800) {
 		waveX = -200;
 	}
+	image(waveImg, waveX, 365);
+	image(waveImg, waveX - 200, waterY + 130);
+	image(waveImg, waveX - 500, waterY + 110);
+	image(waveImg, waveX - 800, waterY + 120);
+	image(waveImg, waveX + 200, waterY + 100);
+	image(waveImg, waveX + 500, waterY + 120);
+	image(waveImg, waveX + 800, waterY + 130);
+
+	// animate the water
+	image(waterImg, 0, waterY + 40);
+
+	// animate the wave
+
 	image(waveImg, waveX, 365);
 	image(waveImg, waveX - 300, 365);
 	image(waveImg, waveX - 600, 365);
@@ -150,4 +165,5 @@ function draw() {
 	}
 	image(cloud4Img, cloud4X, 80);
 
+	image(wheelImg, 450, random(225, 227));
 }
