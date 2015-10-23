@@ -1,4 +1,7 @@
 // illustration.js
+//text: He was an old man who fished alone in a skiff in the Gulf Stream
+//name of the book: the old man and the sea
+
 
 // list the illustration that i am going to use
 var backgroundImg;
@@ -14,6 +17,10 @@ var skyblockImg;
 var waterImg;
 var waveImg;
 var wheeImg;
+var oldmanLeanImg;
+var oldmanStandImg;
+var fish2Img;
+var fish3Img;
 
 //give a starting position for the cloud 1,2,3,4
 var cloud1X = -100;
@@ -26,8 +33,14 @@ var waveX = 300;
 var waterY = 190;
 var waterSpeedY = 0.5;
 //give a attribute to the ship
-var boatY = 230;
+var boatY = 235;
 var boatSpeedY = 0.2;
+//giave a starting position for the fish 2,3
+var fish2X = 800;
+var fish2Xspeed = -0.5;
+var fish3X = 0;
+var fish3Xspeed = 0.5;
+
 
 
 function preload() {
@@ -44,6 +57,10 @@ function preload() {
 	waterImg = loadImage("images/water.png");
 	waveImg = loadImage("images/wave.png");
 	wheelImg = loadImage("images/wheel.png");
+	oldmanLeanImg = loadImage("images/oldmanLean.png");
+	oldmanStandImg = loadImage("images/oldmanStand.png");
+	fish2Img = loadImage("images/fish2.png");
+	fish3Img = loadImage("images/fish3.png");
 }
 
 function setup() {
@@ -70,6 +87,11 @@ function draw() {
 	//animte the oldman
 	image(oldmanImg, 300, 209);
 
+	if (mouseIsPressed) {
+		image(oldmanLeanImg, 280, 225);
+	} else {
+		image(oldmanStandImg, 300, 220);
+	}
 	//place the hand of old man
 	// wind the fishing rod when clicked
 	if (mouseIsPressed) {
@@ -100,7 +122,7 @@ function draw() {
 	if (boatY > 255) {
 		boatSpeedY = -boatSpeedY;
 	}
-	if (boatY < 230) {
+	if (boatY < 235) {
 		boatSpeedY = -boatSpeedY;
 	}
 	image(boatImg, 50, boatY);
@@ -128,8 +150,16 @@ function draw() {
 	image(waveImg, waveX + 800, waterY + 130);
 
 	// animate the water
-	image(waterImg, 0, waterY + 40);
+	image(waterImg, 0, waterY + 30);
 
+
+	//draw fish
+	fish3X = fish3X + fish3Xspeed;
+	if (fish3X > 800) {
+		fish3X = 0;
+	}
+	image(fish3Img, fish3X, waterY + 200);
+	image(fish3Img, fish3X + 150, waterY + 230);
 	// animate the wave
 
 	image(waveImg, waveX, 365);
@@ -165,5 +195,14 @@ function draw() {
 	}
 	image(cloud4Img, cloud4X, 80);
 
+	//draw wheel that tell that the fish bited the rod
 	image(wheelImg, 450, random(225, 227));
+
+	//draw fish
+	fish2X = fish2X + fish2Xspeed;
+	if (fish2X < 0) {
+		fish2X = 800;
+	}
+	image(fish2Img, fish2X, waterY + 300);
+
 }
