@@ -2,7 +2,7 @@
 //text: He was an old man who fished alone in a skiff in the Gulf Stream
 //name of the book: the old man and the sea
 
-var currentScene = "day"
+var currentScene = "day";
 
 // list the illustration that i am going to use
 var backgroundImg;
